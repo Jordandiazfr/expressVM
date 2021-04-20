@@ -22,7 +22,8 @@ jobs:
       env:
         ANSIBLE_VAULT_PASSWORD: ${{ secrets.SSH_KEY }}
       run: |
-        mkdir .ssh && cd .ssh
+        mkdir ~/.ssh
+        cd .ssh
         echo "$ANSIBLE_VAULT_PASSWORD" > .ssh/jojokey.pem
         chmod 400 .ssh/jojokey.pem
 #####
