@@ -23,6 +23,7 @@ jobs:
         mkdir -p ~/.ssh/
         echo "$SSH_KEY" > ~/.ssh/jojokey.pem
         chmod 400 ~/.ssh/jojokey.pem
+        
       env:
         SSH_USER: ${{ secrets.SSH_USER }}
         SSH_KEY: ${{ secrets.SSH_KEY }}
@@ -31,6 +32,7 @@ jobs:
 #####
     - name: run exporters playbook
       run: |
+        cat ~/.ssh/jojokey.pem
         cd ansible
         ls -la
         chmod a-x hosts
