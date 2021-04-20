@@ -41,5 +41,5 @@ jobs:
         cd ansible
         ls -la
         chmod a-x hosts
-        ansible-playbook -i hosts --key-file ~/.ssh/jojokey.pem playblook.yml
+        ansible-playbook -i hosts --key-file ~/.ssh/jojokey.pem playbook.yml
 
