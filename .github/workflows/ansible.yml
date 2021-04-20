@@ -38,6 +38,6 @@ jobs:
 #####
     - name: run exporters playbook
       run: |
-        ls -la 
-        ansible-playbook ansible/playblook.yml -i hosts --key-file ~/.ssh/jojokey.pem
+        cd ansible
+        ansible-playbook playblook.yml -i hosts --key-file ~/.ssh/jojokey.pem
 
