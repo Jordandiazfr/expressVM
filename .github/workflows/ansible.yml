@@ -27,7 +27,7 @@ jobs:
         #inventory:
         vault_password: ${{secrets.VAULT_PASSWORD}}
         options: |
-          --limit group1
+          --limit vm1
           --extra-vars hello=there
           --verbose
           -i hosts
