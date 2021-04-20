@@ -19,7 +19,7 @@ jobs:
         pip install ansible==2.9.2 requests
 #####
     - name: Install SSH key
-      uses: shimataro/ssh-key-action@v2*
+      uses: shimataro/ssh-key-action@v2
       env: 
         JOJOKEY:  ${{ secrets.SSH_KEY }}
       with: 
