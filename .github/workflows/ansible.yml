@@ -24,14 +24,11 @@ jobs:
         playbook: playbook.yml
         directory: ./ansible
         key: ${{secrets.SSH_KEY}}
-        inventory: |
-          [vm1]
-          20.55.59.93
-          [group1]
-          example.com
+        #inventory:
         vault_password: ${{secrets.VAULT_PASSWORD}}
         options: |
           --limit group1
           --extra-vars hello=there
           --verbose
+          --inventory-file= hosts
 
