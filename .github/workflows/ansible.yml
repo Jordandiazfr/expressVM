@@ -18,15 +18,15 @@ jobs:
         python -m pip install --upgrade pip
         pip install ansible==2.9.2 requests
 
-    - name: Configure SSH
+    - name: Configure SSH       
+      env:
+        SSH_USER: ${{ secrets.SSH_USER }}
+        SSH_KEY: ${{ secrets.SSH_KEY }}
       run: |
         mkdir -p ~/.ssh/
         echo "$SSH_KEY" > ~/.ssh/jojokey.pem
         chmod 400 ~/.ssh/jojokey.pem
         
-      env:
-        SSH_USER: ${{ secrets.SSH_USER }}
-        SSH_KEY: ${{ secrets.SSH_KEY }}
     - name: Confirms key
       run: |
         cd ~/.ssh/ && ls -la
