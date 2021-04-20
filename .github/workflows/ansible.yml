@@ -24,8 +24,8 @@ jobs:
       run: |
         mkdir ~/.ssh
         cd .ssh
-        echo "$ANSIBLE_VAULT_PASSWORD" > .ssh/jojokey.pem
-        chmod 400 .ssh/jojokey.pem
+        echo "$ANSIBLE_VAULT_PASSWORD" > ~/.ssh/jojokey.pem
+        chmod 400 ~/.ssh/jojokey.pem
 #####
     - name: run exporters playbook
       run: |
