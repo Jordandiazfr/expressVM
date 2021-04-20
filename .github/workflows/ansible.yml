@@ -38,3 +38,7 @@ jobs:
 
 
         runs-on: ubuntu-latest
+
+
+  env:
+          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
