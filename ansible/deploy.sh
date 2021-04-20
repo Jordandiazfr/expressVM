@@ -1,0 +1,1 @@
+sudo ansible-playbook playbook.yml -i host --key-file ~/.ssh/jojokey.pem

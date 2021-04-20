@@ -21,13 +21,13 @@ jobs:
     - name: Configure SSH
       run: |
         mkdir -p ~/.ssh/
-        echo "$SSH_KEY" > ~/.ssh/staging.key
-        chmod 600 ~/.ssh/staging.key
+        echo "$SSH_KEY" > ~/.ssh/jojokey.pem
+        chmod 400 ~/.ssh/jojokey.pem
         cat >>~/.ssh/config <<END
-        Host staging
+        Host jojokey
           HostName $SSH_HOST
           User $SSH_USER
-          IdentityFile ~/.ssh/staging.key
+          IdentityFile ~/.ssh/jojokey.pem
           StrictHostKeyChecking no
           END
       env:
@@ -39,5 +39,5 @@ jobs:
     - name: run exporters playbook
       run: |
         ls -la 
-        ansible-playbook playblook.yml -i hosts --key-file ~/.ssh/id_rsa
+        ansible-playbook ansible/playblook.yml -i hosts --key-file ~/.ssh/jojokey.pem
 

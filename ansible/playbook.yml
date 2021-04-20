@@ -1,0 +1,12 @@
+# Install system apt packages
+- hosts: vm1
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Install a list of packages (suitable replacement for 2.11 loop deprecation warning)
+      yum:
+        name:
+          - node
+          - npm
+          - git
+        state: present
