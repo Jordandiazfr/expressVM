@@ -1,12 +1,19 @@
+# Install mongo DB in VM3
+
+- name: install mongo
+  hosts: vm3
+  become: yes
+  become_method: sudo
+  module_defaults:
+    apt:
+      force_apt_get: yes
+  roles:
+    - mongodb
+
+
 # Install system apt packages
 - hosts: vm1
   become: yes
   become_method: sudo
-  tasks:
-    - name: Install a list of packages (suitable replacement for 2.11 loop deprecation warning)
-      yum:
-        name:
-          - node
-          - npm
-          - git
-        state: present
+  roles:
+    - nodejs

@@ -19,6 +19,30 @@ jobs:
         python -m pip install --user ansible
         python -m pip install --user paramiko
         pip install ansible requests
+
+####
+    - name: Configure SSH
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$SSH_KEY" > ~/.ssh/staging.key
+        chmod 600 ~/.ssh/staging.key
+        echo "$SSH_KEY" > ~/.ssh/jojokey.pem
+        chmod 400 ~/.ssh/jojokey.pem
+        cat >>~/.ssh/config <<END
+        Host jojokey
+          HostName $SSH_HOST
+          User jojoadmin
+          IdentityFile ~/.ssh/jojokey.pem
+          StrictHostKeyChecking no
+          END
+      env:
+        SSH_KEY: ${{secrets.SSH_KEY}}
+
+    - name: run exporters playbook
+      run: |
+        ls -la 
+        ansible-playbook playblook.yml -i hosts --key-file ~/.ssh/id_rsa
+        ansible-playbook ansible/playblook.yml -i hosts --key-file ~/.ssh/jojokey.pem
 #####
     - name: Run playbook
       uses: dawidd6/action-ansible-playbook@v2.3.0
@@ -33,4 +57,3 @@ jobs:
           --extra-vars hello=there
           --verbose
           -i hosts
-

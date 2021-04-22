@@ -1,12 +1,14 @@
 [vm1]
 40.76.249.119
-
-
-
-[vm1:vars]
-ansible_ssh_user=jojoadmin
-
 [vm2]
-#20.55.59.93
-
+20.55.59.93
 [vm3]
+52.146.3.218
+[all:vars]
+ansible_ssh_user=jojoadmin
+ansible_python_interpreter="/usr/bin/env python3"
+homeDir: /home/ubuntu
+appDir : app
+repo: my_app
+account: mbejda
+privateKey: ~/.ssh/jojokey.pem
